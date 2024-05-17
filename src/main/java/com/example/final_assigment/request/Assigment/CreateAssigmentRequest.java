@@ -18,5 +18,4 @@ import java.util.List;
 public class CreateAssigmentRequest {
     private List<AssigmentDto> assigmentList;
     private List<Word> wordList;
-
 }

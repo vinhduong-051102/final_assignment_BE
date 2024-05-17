@@ -7,8 +7,10 @@ import com.example.final_assigment.model.Assigment;
 import com.example.final_assigment.model.Lesson;
 import com.example.final_assigment.request.Assigment.CreateAssigmentRequest;
 import com.example.final_assigment.request.Lesson.CreateRequest;
+import com.example.final_assigment.request.Lesson.MarkCompleteRequest;
 import com.example.final_assigment.response.Lesson.CreateResponse;
 import com.example.final_assigment.response.Lesson.GetListResponse;
+import com.example.final_assigment.response.Lesson.MarkCompleteResponse;
 import com.example.final_assigment.service.AssigmentService;
 import com.example.final_assigment.service.LessonService;
 import com.example.final_assigment.service.WordService;
@@ -46,18 +48,6 @@ public class LessonController {
                     wordService.createWord(word.getVocabulary(), word.getMeaning(), lesson.getId());
                 });
 
-//                String apiUrl = "http://192.168.1.77:6868/test";
-//                // Tạo header
-//                HttpHeaders headers = new HttpHeaders();
-//                headers.setContentType(MediaType.APPLICATION_JSON);
-//                // Tạo đối tượng request
-//                HttpEntity<String> r = new HttpEntity<>(json, headers);
-//                ResponseEntity<String> response = restTemplate.postForEntity(apiUrl, r, String.class);
-////                String responseBody = response.getBody();
-////                CreateAssigmentResponse createAssigmentResponse = objectMapper.readValue(responseBody, CreateAssigmentResponse.class);
-////                for (int i = 0; i < createAssigmentResponse.getList().size(); i++) {
-////                    questionAndAnswerService.createQA(createAssigmentResponse.getList().get(i).getResource(), createAssigmentResponse.getList().get(i).getAssigmentId());
-////                }
                 return ResponseEntity.status(200).body(CreateResponse.builder().message("Thêm mới thành công").build());
             }
             return ResponseEntity.status(400).body(CreateResponse.builder() .message("Thêm mới thất bại").build());
@@ -85,6 +75,12 @@ public class LessonController {
             return ResponseEntity.status(200).body(GetListResponse.builder().lessonList(list).message("Lấy danh sách thành công").build());
         }
         return ResponseEntity.status(400).body(GetListResponse.builder().lessonList(null).message("Lấy danh sách thất bại").build());
+    }
+
+    @PutMapping("/mark_complete")
+    public ResponseEntity<?> markComplete(@RequestBody MarkCompleteRequest request) {
+        assigmentService.markComplete(request.getAssigmentId());
+        return ResponseEntity.status(200).body(MarkCompleteResponse.builder().message("Bài tập đã hoàn thành").build());
     }
 
 }

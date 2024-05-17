@@ -27,4 +27,7 @@ public class Assigment {
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
 
+    @OneToMany(mappedBy = "assigment", cascade = CascadeType.ALL)
+    private List<Result> resultList;
+
 }

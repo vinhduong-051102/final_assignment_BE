@@ -19,4 +19,12 @@ public class AssigmentService {
         Optional<Lesson> lesson = lessonRepository.findById(lessonId);
         return lesson.map(value -> assigmentRepository.save(Assigment.builder().lesson(value).isCompleted(false).type(type).build())).orElse(null);
     }
+
+    public void markComplete(Long assigmentId) {
+        Optional<Assigment> assigment = assigmentRepository.findById(assigmentId);
+        if (assigment.isPresent()) {
+            assigment.get().setIsCompleted(true);
+            assigmentRepository.save(assigment.get());
+        }
+    }
 }

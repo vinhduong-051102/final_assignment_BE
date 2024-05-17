@@ -8,5 +8,4 @@ public class FinalAssigmentApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FinalAssigmentApplication.class, args);
 	}
-
 }
