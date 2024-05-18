@@ -27,4 +27,12 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Lesson> lessonList;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "chat_id", referencedColumnName = "id")
+    private Chat chat;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "target_id", referencedColumnName = "id")
+    private Target target;
 }
