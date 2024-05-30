@@ -1,4 +1,4 @@
-package com.example.final_assigment.request.Result;
+package com.example.final_assigment.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreateResultRequest {
-    private Long assigmentId;
+public class ResultDto {
+    private Long id;
     private Boolean isPass;
-    private Long userId;
+    private String type;
 }

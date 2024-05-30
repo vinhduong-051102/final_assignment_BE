@@ -21,6 +21,8 @@ public class Chat {
     @Column
     private String content;
 
-    @OneToOne(mappedBy = "chat")
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
+
 }

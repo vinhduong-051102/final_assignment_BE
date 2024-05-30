@@ -1,5 +1,4 @@
-package com.example.final_assigment.request.Result;
-
+package com.example.final_assigment.request.Target;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,8 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreateResultRequest {
-    private Long assigmentId;
-    private Boolean isPass;
+public class CreateTargetRequest {
     private Long userId;
+    private Long amount;
+    private Integer dayOfWeek;
+    private Integer studyTime;
 }

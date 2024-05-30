@@ -21,4 +21,8 @@ public class Result {
     @ManyToOne
     @JoinColumn(name = "assigment_id")
     private Assigment assigment;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

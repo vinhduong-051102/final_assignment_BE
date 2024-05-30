@@ -28,11 +28,12 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Lesson> lessonList;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "chat_id", referencedColumnName = "id")
-    private Chat chat;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Chat> chatList;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "target_id", referencedColumnName = "id")
-    private Target target;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Target> targetList;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Result> resultList;
 }

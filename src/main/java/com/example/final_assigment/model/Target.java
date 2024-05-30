@@ -16,12 +16,16 @@ public class Target {
     private Long id;
 
     @Column
-    private Long numberOfAssignment;
+    private Long amount;
 
     @Column
-    private Float time;
+    private Integer studyTime;
 
-    @OneToOne(mappedBy = "target")
+    @Column
+    private Integer dayOfWeek;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
 }
